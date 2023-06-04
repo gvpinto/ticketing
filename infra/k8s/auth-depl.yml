@@ -13,14 +13,20 @@ spec:
         app: auth
     spec:
       containers:
-      - name: auth
-        image: piercingstripes/auth
-        # resources:
-        #   limits:
-        #     memory: "128Mi"
-        #     cpu: "500m"
-        # ports:
-        # - containerPort: <Port>
+        - name: auth
+          image: piercingstripes/auth
+          env:
+            - name: JWT_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: jwt-secret
+                  key: JWT_KEY
+          # resources:
+          #   limits:
+          #     memory: "128Mi"
+          #     cpu: "500m"
+          # ports:
+          # - containerPort: <Port>
 
 ---
 apiVersion: v1
@@ -31,7 +37,7 @@ spec:
   selector:
     app: auth
   ports:
-  - name: auth
-    protocol: TCP
-    port: 3000
-    targetPort: 3000
+    - name: auth
+      protocol: TCP
+      port: 3000
+      targetPort: 3000
