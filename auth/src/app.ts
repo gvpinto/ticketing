@@ -16,7 +16,7 @@ app.set('trust proxy', true); // Trust the ingrex proxy
 app.use(json());
 app.use(cookieSession({
     signed: false, // Do not encrypt the cookie
-    secure: true // send cookie only over https connection
+    secure: (process.env.NODE_ENV !== 'test') // send cookie only over https connection
 }));
 
 app.use(currentUserRouter);
