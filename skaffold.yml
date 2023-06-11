@@ -10,8 +10,16 @@ build:
     - image: piercingstripes/auth
       context: auth
       docker:
-        dockerfile: Dockerfile      
+        dockerfile: Dockerfile
       sync:
         manual:
           - src: "src/**/*.ts"
+            dest: .
+    - image: piercingstripes/client
+      context: client
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: "**/*.js"
             dest: .
