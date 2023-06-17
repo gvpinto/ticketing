@@ -1,8 +1,7 @@
 import express, { Response, Request } from 'express';
 import { body } from 'express-validator';
-import { validateRequest } from '../middlewares/validate-request';
+import { validateRequest, BadRequestError } from '@tenexi/common';
 import { User } from '../models/user';
-import { BadRequestError } from '../errors/bad-request-error';
 import jwt from 'jsonwebtoken';
 import { Password } from '../services/password';
 
