@@ -36,7 +36,7 @@ const userSchema = new mongoose.Schema({
     }
 });
 
-
+// Type checking before a user document is created. Only for Typescript
 userSchema.statics.build = (attrs: UserAttrs) => {
     return new User(attrs);
 };
